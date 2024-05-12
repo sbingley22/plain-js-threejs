@@ -1,0 +1,19 @@
+.splitter {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  width: 80vw;
+  height: 80vh;
+}
+
+.three-container {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+}
+
+@media (max-width: 768px) {
+  .splitter {
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
+  }
+}
