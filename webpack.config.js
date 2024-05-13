@@ -14,12 +14,17 @@ module.exports = {
     hot: true,
     port: 9000,
   },
-  // Pack glbs into bundle.js
   module: {
     rules: [
+      // Allow Import of glbs
       {
-        test: /\.glb$/, // Match only GLB files
-        use: 'raw-loader', // Use the `raw-loader`
+        test: /\.(glb|gltf)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+          },
+        },
       },
     ],
   },

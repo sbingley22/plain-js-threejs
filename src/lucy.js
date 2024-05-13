@@ -1,4 +1,4 @@
-//import glbFile from '../dist/assets/Lucy.glb?url'
+import glbFile from '../dist/assets/Lucy.glb'
 
 const Lucy = (THREE, GLTFLoader, scene) => {
   let mixer
@@ -9,8 +9,18 @@ const Lucy = (THREE, GLTFLoader, scene) => {
 
   // Load GLTF model
   const loader = new GLTFLoader()
-  //loader.load(glbFile, function (gltf) {
-  loader.load('./assets/Lucy.glb', function (gltf) {
+
+  // Load normaly
+  // loader.load('./assets/Lucy.glb', function (gltf) {
+  //   loadModel(gltf)
+  // })
+
+  // Load using web pack
+  loader.load(glbFile, function (gltf) {
+    loadModel(gltf)
+  })
+
+  const loadModel = (gltf) => {
     model = gltf.scene
     scene.add(model)
     model.name = "lucy"
@@ -23,7 +33,7 @@ const Lucy = (THREE, GLTFLoader, scene) => {
 
     pistol = getNodebyName(model, "Pistol")
     pistol.visible = false
-  })
+  }
 
   const getNodebyName = (node, name) => {
     if (node.name == name) return node
